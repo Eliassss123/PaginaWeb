@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    <style>
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: none; /* eliminamos el fondo fijo */
+        }
+
+        /* Imagen ocupando toda la altura natural, generando scroll */
+        .imagen-fondo {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 2vh;
+        }
+        .imagen-extra {
+            width: 100%;   /* Usa el 100% del ancho del viewport */
+            height: auto;   /* Mantiene proporciones */
+            display: block; /* Elimina espacio blanco debajo */
+            margin: 0;
+            padding: 0;
+            margin-top: -100px;
+        }
+
+
+        .titulo-principal {
+            font-size: 40px; 
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+                .texto-titulo-principal {
+                    font-family: 'Playfair Display', serif;  /* Fuente elegante */
+                    font-size: 20px;                         /* Tamaño del texto */
+                    color: #444;                             /* Color del texto */
+                    text-align: center;                      /* Centrado horizontal */
+                    margin-top: 10px;                        /* Espacio respecto al título */
+                    letter-spacing: 1px;                     /* Espaciado entre letras */
+                    font-weight: 300;                        /* Grosor del texto */
+                }
+
+        .mensaje-personalizado {
+            text-align: center;
+            margin: 10px 0 40px;
+            color: #555;
+        }
+
+        /* Sección cuadrada debajo de la imagen */
+    .segunda-seccion { /*Seccion blanca donde aparece la parca*/
+      position: absolute;
+      top: 130vh;  /* justo abajo de la primera ventana (imagen visible) */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 900px;    
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #003366;
+      z-index: 10;
+    }
+                .titulo-segunda-seccion {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 40px;
+                    color: #111;
+                    text-align: center;
+                    margin-top: 810px;   /* <- Ajusta aquí para subir o bajar */
+                    z-index: 15;
+                    position: relative;
+                    }
+        .tercera-seccion {
+        position: absolute;
+        top: 600vh;  /* justo abajo de la primera ventana (imagen visible) */
+        left: 73%;
+        transform: translateX(-50%);
+        width: 530px;
+        height: 600px;
+        background-color: rgb(8, 8, 185);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: #003366;
+        z-index: 10;
+        }
+        
+
+
+                        .imagen-superpuesta-parca { /* parca negra */
+                        position: absolute;
+                        top: 26px;     /* desde arriba */
+                        left: 33px;    /* desde la izquierda */
+                        width: 300px;  /* ajustar el tamaño */
+                        transition: transform 0.3s ease; /* Animación suave */
+                    }
+                                .imagen-superpuesta-parca:hover {
+                                    transform: scale(1.05); /* Aumenta tamaño al 110% */
+                                    z-index: 100; /* Se asegura que se muestre sobre otras */
+                                }
+                        .imagen-superpuesta-negropoleron { /* poleron moreno */
+                        position: absolute;
+                        top: 26.2px;     /* desde arriba */
+                        left: 360px;    /* desde la izquierda */
+                        width: 300px;  /* ajustar el tamaño */
+                        transition: transform 0.3s ease; /* Animación suave */
+                    }
+                                .imagen-superpuesta-negropoleron:hover {
+                                    transform: scale(1.05); /* Aumenta tamaño al 110% */
+                                    z-index: 100; /* Se asegura que se muestre sobre otras */
+                                }
+                        .imagen-superpuesta-buzo-mujer { /* buzo mujer */
+                        position: absolute;
+                        top: 26.2px;     /* desde arriba */
+                        left: 695px;    /* desde la izquierda */
+                        width: 525px;  /* ajustar el tamaño */
+                        transition: transform 0.3s ease; /* Animación suave */
+                    }
+                                .imagen-superpuesta-buzo-mujer:hover {
+                                    transform: scale(1.02); /* Aumenta tamaño al 110% */
+                                    z-index: 100; /* Se asegura que se muestre sobre otras */
+                                }
+                        .imagen-superpuesta-mujer-rectangular { /* buzo mujer */
+                        position: absolute;
+                        top: 355px;     /* desde arriba */
+                        left: 33px;    /* desde la izquierda */
+                        width: 626px;  /* ajustar el tamaño */
+                        transition: transform 0.3s ease; /* Animación suave */
+                    }
+                                .imagen-superpuesta-mujer-rectangular:hover {
+                                    transform: scale(1.03); /* Aumenta tamaño al 110% */
+                                    z-index: 100; /* Se asegura que se muestre sobre otras */
+                                }
+                    .texto-colaboracion {
+                        font-family: 'Playfair Display', serif;       /* Cambia la fuente */
+                        font-size: 100px;                     /* Tamaño del texto */
+                        color: #ffffff;                         /* Color del texto */
+                        text-align: center;                  /* Alineación horizontal */
+                        margin-top: -1200px;                    /* Espacio superior */
+                        letter-spacing: 1px;                 /* Espacio entre letras */
+                        line-height: 1.6;                    /* Altura de línea */
+                        font-weight: 400;                    /* Grosor del texto */
+                        }
+
+        .quinta-seccion {
+        position: absolute;
+        top: 500%; /* Ajusta esto según en qué punto aparezca logo2.jpg */
+        left: 0;
+        width: 100%;
+        height: 1000px;
+        background-color: rgba(255, 255, 255, 1); /* Blanco casi opaco */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 20;
+        }
+
+
+
+            .seccion-boton-categorias {
+                position: absolute;
+                top: 18vh; /* Ajusta según la altura deseada */
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 5; /* Asegúrate de que esté por encima de la imagen */
+                text-align: center;
+                    position: absolute; /* para poder usar top/left */
+                    top: 150px;
+                    left: 550px;
+            }
+
+                    .boton-categorias {
+                        font-size: 15px;
+                        padding: 15px 30px;
+                        height: 50px;
+                        background-color: rgb(255, 255, 255);
+                        color: rgb(0, 0, 0);
+                        border: none;
+                        border-radius: 0px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease;
+
+
+                    }
+
+                    .boton-categorias:hover {
+                        background-color: #0d0d0d;
+                        color: white;
+                    }
+    
+
+        .seccion-boton-especiales {
+                position: absolute;
+                top: 18vh; /* Ajusta según la altura deseada */
+                left: 700px;
+                transform: translateX(-50%);
+                z-index: 5; /* Asegúrate de que esté por encima de la imagen */
+                text-align: center;
+                    position: absolute; /* para poder usar top/left */
+                    top: 150px;
+                    left: 725px;
+            }
+
+                    .boton-especiales {
+                        font-size: 15px;
+                        padding: 15px 30px;
+                        height: 50px;
+                        background-color: rgb(255, 255, 255);
+                        color: rgb(0, 0, 0);
+                        border: none;
+                        border-radius: 0px;
+                        cursor: pointer;
+                        transition: background-color 0.3s ease;
+
+
+                    }
+
+                    .boton-especiales:hover {
+                        background-color: #121111;
+                        color: white;
+                    }
+
+.video-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+    margin-top: -380px; /* si quieres solapar como la imagen */
+}
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <h1 class="titulo-principal">Aürik</h1>
+    <p class="texto-titulo-principal">Be Yourself</p>
+        <section class="seccion-boton-categorias">
+        <button class="boton-categorias">CATEGORIAS</button>
+        </section>
+        <section class="seccion-boton-especiales">
+        <button class="boton-especiales">ESPECIALES</button>
+        </section>
+    <!-- Imagen grande que genera scroll -->
+    <img src="/img/logo.jpg" alt="Fondo largo" class="imagen-fondo" />
+
+    <!-- Sección cuadrada tras el scroll -->
+    <section class="segunda-seccion">
+        <h2 class="titulo-segunda-seccion">COLABORACIONES</h2>
+         <div class="contenido-seccion">
+                <img src="/img/parcaHombre.jpg" alt="Parca" class="imagen-superpuesta-parca" />
+                <p></p>
+                <img src="/img/negroPoleron.jpg" alt="poleron" class="imagen-superpuesta-negropoleron" />
+                <p></p>
+                <img src="/img/buzo-mujer.jpg" alt="buzo" class="imagen-superpuesta-buzo-mujer" />
+                <p></p>
+                <img src="/img/mujer-rectangular.jpg" alt="rectangular" class="imagen-superpuesta-mujer-rectangular" />
+                <p></p>
+            </div>
+    </section>
+
+<!-- Imagen que debe ocupar toda la pantalla y producir scroll natural -->
+
+<video class="video-logo" autoplay muted loop playsinline>
+  <source src="/video/EternalWip.mp4" type="video/mp4">
+  Tu navegador no soporta el video.
+</video>
+<section class="quinta-seccion">
+  <div class="contenido-5">
+    <p></p>
+  </div>
+</section>
+        
+  
+
+</body>
+</html>
+
+

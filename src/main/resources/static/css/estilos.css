@@ -1,0 +1,34 @@
+
+body {
+    margin: 0; /* elimina márgenes del body para evitar scroll innecesario */
+    padding: 0;
+    background-color: #ffffff; /* fondo claro */
+    font-family: Arial, sans-serif;
+}
+.titulo-principal {
+    font-size: 100px;        /* Tamaño grande */
+    text-align: center;     /* Centrado horizontal */
+    color: #ffffff;         /* Azul bonito */
+    margin-top: 70px;       /* Espacio superior */
+}
+
+.mensaje-personalizado {
+    font-size: 20px;        /* Tamaño mediano */
+    text-align: center;     /* Centrado */
+    color: #ffffff;            /* Gris oscuro */
+    margin-top: 20px;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
